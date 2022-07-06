@@ -1,0 +1,25 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "description": "Blogging site using node js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswinr19/node-blog-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aswinr19/node-blog-project/issues"
+  },
+  "homepage": "https://github.com/aswinr19/node-blog-project#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.3"
+  }
+}
