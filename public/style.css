@@ -1,0 +1,27 @@
+body{
+    border: 0px;
+    margin: 0px;
+    font-family: 'poppins', sans-serif;
+}
+
+.nav{
+    
+}
+.nav a{
+    text-decoration: none;
+    color: #000000;
+}
+.nav-elements{
+   list-style-type: none;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
