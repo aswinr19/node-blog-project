@@ -24,3 +24,18 @@ body{
     align-items: center;
     font-size: 15px;
 }
+
+.form{
+    margin: 20px;
+}
+
+.form input{
+
+    margin: 5px;
+
+}
+
+.content{
+    margin: 60px;
+    text-align: justify;
+}
