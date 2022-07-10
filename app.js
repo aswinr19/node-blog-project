@@ -2,12 +2,19 @@ const express = require("express");
 
 const app = express();
 
+const blogRoutes = require('./routes/blogRoutes');
+
+//setting up view engine
 app.set('view engine','ejs');
 
+//using static middleware to acces static files
 app.use(express.static('public'));
 
+//listening to port 3000
 app.listen(3000);
 
+
+//routes
 app.get('/',(req,res)=>{
     res.render('index',{title:'Home'});
 });
@@ -32,32 +39,10 @@ app.get('/about',(req,res)=>{
     res.render('about',{title:'About Us'});
 });
 
+//blog routes
+app.use(blogRoutes);
 
-
-app.get('/blogs',(req,res)=>{
-    res.render('blogs/index',{title:'Blogs'});
-});
-
-app.get('/blogs/create-blog',(req,res)=>{
-    res.render('blogs/create',{title:'Create Blog'});
-});
-
-app.post('/blogs/create-blog',(req,res)=>{
-});
-
-app.get('/blogs/update-blog',(req,res)=>{
-    res.render('blogs/update',{title:'Update Blog'});
-});
-
-app.post('/blogs/update-blog',(req,res)=>{
-   
-});
-
-app.get('/blogs/show/:id',(req,res)=>{
-    res.render('blogs/show',{title:'Show Blog'});
-});
-
-
+//middleware to send 404
 app.use((req,res)=>{
     res.status(404).render('404',{title:'404'});
 });

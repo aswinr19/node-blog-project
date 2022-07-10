@@ -10,7 +10,8 @@ body{
 }
 .nav-elements{
    list-style-type: none;
-   display: inline-block;
+   display: inline;
+   padding-right: 20px;
   
 }
 .title{
