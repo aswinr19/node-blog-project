@@ -31,9 +31,11 @@ body{
 }
 
 .form input{
-
     margin: 5px;
+}
 
+.form select{
+    margin: 5px;
 }
 
 .content{
