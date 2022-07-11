@@ -4,6 +4,8 @@ const app = express();
 
 const blogRoutes = require('./routes/blogRoutes');
 
+
+
 //setting up view engine
 app.set('view engine','ejs');
 
@@ -15,7 +17,7 @@ app.listen(3000);
 
 
 //routes
-app.get('/',(req,res)=>{
+app.get('/', (req,res)=>{
     res.render('index',{title:'Home'});
 });
 
