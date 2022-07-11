@@ -1,9 +1,18 @@
 const express = require("express");
 
+const mongoose = require('mongoose');
+
+const dotenv = require('dotenv').config();
+
 const app = express();
 
 const blogRoutes = require('./routes/blogRoutes');
 
+
+// const dbURI = `mongodb+srv://${process.env.DBUser}:${process.env.DBPass}@cluster0.3pqa0cb.mongodb.net/?retryWrites=true&w=majority`;
+
+//connect to database
+// mongoose.connect(dbURI,{}).then().catch();
 
 
 //setting up view engine
