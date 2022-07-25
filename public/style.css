@@ -1,6 +1,7 @@
 body{
     border: 0px;
     margin: 0px;
+  
     font-family: 'poppins', sans-serif;
 }
 
@@ -26,8 +27,12 @@ body{
     font-size: 15px;
 }
 
-.form{
-    margin: 20px;
+.form {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .form input{
@@ -42,3 +47,18 @@ body{
     margin: 60px;
     text-align: justify;
 }
+
+.select{
+    text-align: center;
+    background-color: #80ed99;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 60px ;
+   
+}
+.select:hover{
+    background-color: #57cc99;
+}
+

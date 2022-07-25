@@ -1,0 +1,57 @@
+
+.btn-signin{
+    text-align: center;
+    background-color: #80ed99;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 90px ;
+   
+}
+.btn-signin:hover{
+    background-color: #57cc99;
+}
+
+.btn-signup{
+    text-align: center;
+    background-color: #80ed99;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 85px ;
+   
+}
+.btn-signup:hover{
+    background-color: #57cc99;
+}
+
+
+.btn-create{
+    text-align: center;
+    background-color: #80ed99;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 95px ;
+   
+}
+.btn-create:hover{
+    background-color: #57cc99;
+}
+
+.btn-update{
+    text-align: center;
+    background-color: #80ed99;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 91px ;
+   
+}
+.btn-update:hover{
+    background-color: #57cc99;
+}

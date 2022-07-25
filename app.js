@@ -8,6 +8,7 @@ const app = express();
 
 const blogRoutes = require('./routes/blogRoutes');
 
+const PORT = 3000;
 
 // const dbURI = `mongodb+srv://${process.env.DBUser}:${process.env.DBPass}@cluster0.3pqa0cb.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -22,7 +23,9 @@ app.set('view engine','ejs');
 app.use(express.static('public'));
 
 //listening to port 3000
-app.listen(3000);
+app.listen(PORT,function(){
+    console.log(`listening on http://localhost:${PORT}/`);
+});
 
 
 //routes
