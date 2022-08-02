@@ -1,0 +1,118 @@
+/*:root{
+	--primary:
+	--secondary:
+}*/
+
+body{
+    border: 0px;
+    margin: 0px;
+    font-size: 17px;
+    font-family: 'poppins', sans-serif;
+}
+ 
+a{
+    text-decoration: none;
+
+}
+.nav-elements{
+   list-style-type: none;
+   display: inline;
+   padding-right: 20px;
+   color: #000000;
+  
+}
+
+.nav-elements:hover{
+	color: #06d6a0;
+ }
+
+ a:hover{
+	color: #06d6a0;
+ }
+
+.title{
+	padding-top: 20px;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.grid{
+	margin: 10px  30px;
+	display: grid;
+	grid-template-columns:  1fr;
+	gap: 10px;
+	text-align: justify;
+}
+
+.form{
+	margin:10px 40px;
+	text-align: justify;
+}
+
+.btn{
+	margin: 10px 0px;
+	padding: 10px 20px;
+	font-size: 1rem;
+	background-color: #06d6a0;
+	color: #ffffff;
+	border: none; 
+	border-radius: 5px;
+	
+}
+
+input{
+	width:90%;
+}
+
+textarea{
+	width:90%;
+}
+select{
+	width:90%;
+}
+
+.footer{
+	font-size: 0.7rem;
+	text-align: center;
+	margin: 10px;
+}
+
+@media screen and (min-width: 620px){
+
+
+
+}
+
+@media screen and (min-width: 960px){
+
+
+}
+
+@media screen and (min-width: 1200px){
+
+	body{
+		font-size: 19px;
+	}
+	.title{
+		font-size: 2.5rem;
+	}
+	.grid{
+		margin: 10px  250px;
+		gap: 20px;
+	}
+	.footer{
+		font-size: 0.9rem;
+	
+	}
+
+	input{
+		width:30%;
+	}
+	
+	textarea{
+		width:30%;
+	}
+	select{
+		width:30%;
+	}
+}
