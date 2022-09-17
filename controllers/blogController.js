@@ -1,4 +1,4 @@
-
+const Blog = require("../models/blog");
 
 const blogIndex = (req,res)=>{
     res.render('blogs/index',{title:'Blogs'});
