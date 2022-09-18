@@ -4,6 +4,12 @@
     <body>
         <%- include('../partials/nav.ejs') %>
     <h2 class="title">Single blog</h2>
+
+    <% if(blog.length > 0) %> 
+       
+    <p><%= blog.title %> | <%= blog.topic %></p>
+    <div><%= blog.snippet %></div>
+    <div><%= blog.content %></div>
    
     <%- include('../partials/footer.ejs') %>
 </body>

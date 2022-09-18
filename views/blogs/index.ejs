@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
-    <body>
-        <%- include('../partials/nav.ejs') %>
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/nav.ejs') %>
     <h2 class="title">Blogs</h2>
-    <%- include('../partials/footer.ejs') %>
-</body>
+
+    <div class="content">
+      <% if(blogs.length > 0) %> <% blogs.forEach( blog=>{ %>
+        <a href="/blogs/show/<%= blog._id %>">
+          <p class="title"><%= blog.title %> | <%= blog.topic %></p>
+          <div class="snippet"><%= blog.snippet %></div>
+          <div class="content"><%= blog.content %></div>
+        </a>
+    </div>
+   
+    <% }) %> <%- include('../partials/footer.ejs') %>
+  </body>
 </html>
