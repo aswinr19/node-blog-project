@@ -15,6 +15,9 @@ const userSignupPost = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+
+  // const { fname, lname, email, password } = req.body;
+  // console.log(fname, lname, email, password);
 };
 
 const userSigninGet = (req, res) => {
