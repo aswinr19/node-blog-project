@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs') %>
+    <%- include('../partials/head.ejs') %>
     <body>
-        <%- include('./partials/nav.ejs') %>
+        <%- include('../partials/nav.ejs') %>
     <h2 class="title">Signup</h2>
     <div class="form">
-        <form action="" method="">
-            <label for="firstname">First Name</label><br>
+        <form action="/signup" method="POST">
+            <label for="fname">First Name</label><br>
             <input type="text" id="firstname" name="firstname"><br>
-            <label for="lastname">Last Name</label><br>
+            <label for="lname">Last Name</label><br>
             <input type="text" id="lastname" name="lastname"><br>
             <label for="email">Email</label><br>
             <input type="text" id="email" name="email"><br>
             <label for="password">Password</label><br>
-            <input type="text" id="password" name="password"><br>
+            <input type="password" id="password" name="password"><br>
             <input class="btn" type="submit" value="signup" name="submit">
             <p>Already have an account? <a href="/signin" class="link">signin</a></p>
 
         </form>
     </div>
-    <%- include('./partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

@@ -8,10 +8,11 @@ const app = express();
 
 const blogRoutes = require("./routes/blogRoutes");
 
+const userRoutes = require("./routes/userRoutes");
+
 const PORT = 3000;
 
 const dbURI = `mongodb+srv://${process.env.DBUser}:${process.env.DBPass}@node-blog-project.gycq4so.mongodb.net/?retryWrites=true&w=majority`;
-
 //connect to database
 
 async function connect() {
@@ -31,7 +32,10 @@ app.set("view engine", "ejs");
 //using static middleware to acces static files
 app.use(express.static("public"));
 
- app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+
+//set favicon
+// app.use('/favicon.png', express.static('icons/favicon.png'));
 
 //listening to port 3000
 app.listen(PORT, function () {
@@ -43,24 +47,12 @@ app.get("/", (req, res) => {
   res.redirect("/blogs");
 });
 
-app.get("/signin", (req, res) => {
-  res.render("signin", { title: "Signin" });
-});
-
-app.post("/signin", (req, res) => {});
-
-app.get("/signup", (req, res) => {
-  res.render("signup", { title: "Signup" });
-});
-
-app.post("/signup", (req, res) => {});
-
 app.get("/about", (req, res) => {
   res.render("about", { title: "About Us" });
 });
 
 //blog routes
-app.use(blogRoutes);
+app.use(blogRoutes,userRoutes);
 
 //middleware to send 404
 app.use((req, res) => {
