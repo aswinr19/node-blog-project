@@ -7,9 +7,9 @@
 
     <% if(blog.length > 0) %> 
        
-    <p><%= blog.title %> | <%= blog.topic %></p>
-    <div><%= blog.snippet %></div>
-    <div><%= blog.content %></div>
+    <h3 class="post-title"><%= blog.title %> </h3>
+    <div class="post-snippet"><%= blog.snippet %></div>
+    <div class="post-content"><%= blog.content %></div>
    
     <%- include('../partials/footer.ejs') %>
 </body>

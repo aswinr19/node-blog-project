@@ -5,15 +5,16 @@
     <%- include('../partials/nav.ejs') %>
     <h2 class="title">Blogs</h2>
 
-    <div class="content">
+    <div class="content grid">
       <% if(blogs.length > 0) %> <% blogs.forEach( blog=>{ %>
+      <div class="post">
         <a href="/blogs/show/<%= blog._id %>">
-          <p class="title"><%= blog.title %> | <%= blog.topic %></p>
-          <div class="snippet"><%= blog.snippet %></div>
-          <div class="content"><%= blog.content %></div>
+          <h3 class="post-title"><%= blog.title %></h3>
+          <div class="post-snippet"><%= blog.snippet %></div>
         </a>
+      </div>
+      <% }) %>
     </div>
-   
-    <% }) %> <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
