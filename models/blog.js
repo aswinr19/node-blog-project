@@ -7,6 +7,8 @@ const blogSchema = new Schema(
     title: {
       type: String,
       required: true,
+      unique : true,
+      minlength: 5,
     },
     snippet: {
       type: String,
@@ -16,6 +18,7 @@ const blogSchema = new Schema(
     content: {
       type: String,
       required: true,
+      minlength: 100,
     },
     topic: {
       type: String,

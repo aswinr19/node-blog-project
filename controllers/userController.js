@@ -1,22 +1,45 @@
 const User = require("../models/user");
 
+const handleErrors = (err) => {
+  console.log(err.message, err.code);
+
+  let errors = { email: "", password: "" };
+
+  //duplicate error
+
+  if (err.code === 11000) {
+    errors.email = " that email is already registered";
+    return errors;
+  }
+  //validating errors
+  if (err.message.includes("User validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+  return errors;
+};
+
 const userSignupGet = (req, res) => {
   res.render("auth/signup", { title: "Signup" });
 };
 
-const userSignupPost = (req, res) => {
-  const user = new User(req.body);
+const userSignupPost = async (req, res) => {
+  const { fname, lname, email, password } = req.body;
 
-  user
-    .save()
-    .then((result) => {
-      res.redirect("/blogs");
-    })
-    .catch((err) => {
-      console.log(err);
+  try {
+    const user = await User.create({
+      fname,
+      lname,
+      email,
+      password,
     });
 
-  // const { fname, lname, email, password } = req.body;
+    res.status(201).json(user);
+  } catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
+  }
   // console.log(fname, lname, email, password);
 };
 
@@ -24,7 +47,7 @@ const userSigninGet = (req, res) => {
   res.render("auth/signin", { title: "Signin" });
 };
 
-const userSigninPost = (req, res) => {};
+const userSigninPost = async (req, res) => {};
 
 module.exports = {
   userSigninGet,
