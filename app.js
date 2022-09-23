@@ -9,6 +9,7 @@ const app = express();
 
 const blogRoutes = require("./routes/blogRoutes");
 const authRoutes = require("./routes/authRoutes");
+const requireAuth = require("./middleware/authMiddleware");
 const PORT = 3000;
 
 const dbURI = `mongodb+srv://${process.env.DBUser}:${process.env.DBPass}@node-blog-project.gycq4so.mongodb.net/?retryWrites=true&w=majority`;
@@ -41,6 +42,10 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about", { title: "About Us" });
+});
+
+app.get("/protected",requireAuth, (req,res) => {
+  res.send("hai");
 });
 
 //blog routes
