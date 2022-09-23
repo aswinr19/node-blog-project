@@ -78,6 +78,12 @@ a{
 	text-align: center;
 }
 
+.error{
+
+	font-size: 13px;
+	color: #ff0000;
+}
+
 .footer{
 	position: absolute;
 	top: 90%;

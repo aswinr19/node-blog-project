@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv").config();
+const path = require('path');
+const favicon = require('serve-favicon');
 
 const app = express();
 
@@ -16,6 +18,7 @@ app.set("view engine", "ejs");
 
 //using static middleware to acces static files
 app.use(express.static("public"));
+app.use(favicon(path.join(__dirname, 'public/icons', 'favicon.ico')));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));

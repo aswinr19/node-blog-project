@@ -8,16 +8,16 @@
       <form action="/signup" method="POST">
         <label for="fname">First Name</label><br />
         <input type="text" id="fname" name="fname" /><br />
-        <span class="error" id="fnameErr"></span>
+        <span class="error" id="fnameErr"></span><br />
         <label for="lname">Last Name</label><br />
         <input type="text" id="lname" name="lname" /><br />
-        <span class="error" id="lnameErr"></span>
+        <span class="error" id="lnameErr"></span><br />
         <label for="email">Email</label><br />
         <input type="text" id="email" name="email" /><br />
-        <span class="error" id="emailErr"></span>
+        <span class="error" id="emailErr"></span> <br />
         <label for="password">Password</label><br />
         <input type="password" id="password" name="password" /><br />
-        <span class="error" id="passwordErr"></span>
+        <span class="error" id="passwordErr"></span> <br />
         <button>Signup</button>
         <p>
           Already have an account? <a href="/signin" class="link">signin</a>
@@ -40,6 +40,8 @@
           const password = document.getElementById("password").value;
 
           //console.log(fname, lname, email, password);
+          emailErr.textContent = "";
+          passwordErr.textContent = "";
 
           try {
             const res = await fetch("/signup", {
@@ -47,6 +49,18 @@
               body: JSON.stringify({ fname, lname, email, password }),
               headers: { "Content-Type": "application/json" },
             });
+            const data = await res.json();
+            console.log(data);
+
+            if (data.errors) {
+              fnameErr.textContent = data.errors.fname;
+              lnameErr.textContent = data.errors.lname;
+              emailErr.textContent = data.errors.email;
+              passwordErr.textContent = data.errors.password;
+            }
+            if (data.user) {
+              location.assign("/blogs");
+            }
           } catch (err) {
             console.log(err);
           }
