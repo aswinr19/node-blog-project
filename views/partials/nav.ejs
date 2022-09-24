@@ -6,8 +6,15 @@
 
     <li><a href="/about">About</a></li>
 
+    <% if(!user) { %>
     <li>
-      <a href="/signup">Signup</a>
+      <a href="/signin">Signin</a>
     </li>
+    <% } else { %>
+    <li>Welcome <%= user.fname %> <%= user.lname %></li>
+    <li>
+      <a href="/logout">Logout</a>
+    </li>
+    <% } %>
   </ul>
 </nav>
