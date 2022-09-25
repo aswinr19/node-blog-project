@@ -3,13 +3,23 @@
   <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <h2 class="title">Single blog</h2>
 
-   
-
-    <h3 class="post-title"><%= blog.title %></h3>
+    <h3 class="post-title"><%= blog.title %> | <%= blog.topic %></h3>
     <div class="post-snippet"><%= blog.snippet %></div>
     <div class="post-content"><%= blog.content %></div>
-     <%- include('../partials/footer.ejs') %>
+    <a href="/blogs/update-blog/<%= blog._id %>"> Update</a>
+    <a href="/blogs/delete-blog/<%= blog._id %>"> Delete</a>
+
+    <div class="comment">
+      <h4>Comments</h4>
+      <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+      <br /><br /><br />
+
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+      Consectetur et rerum ut consequuntur dicta, <br />
+      molestias sequi quibusdam labore, rem temporibus distinctio <br />
+      ex aperiam non itaque voluptatibus pariatur. Itaque, esse aliquam.
+    </div>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
