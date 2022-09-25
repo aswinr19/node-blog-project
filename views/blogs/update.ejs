@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
-    <body>
-        <%- include('../partials/nav.ejs') %>
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/nav.ejs') %>
     <h2 class="title">Update blog</h2>
+
     <div class="form">
-        <form action="" method="">
-        <label for="title">Title</label><br>
-        <input type="text" id="title" name="title"><br>
-        <label for="content">Content</label><br>
-        <textarea name="content" id="content" cols="30" rows="10"></textarea><br>
-        <label for="topic">Topic</label><br>
+      <form action="/blogs/update-blog" method="POST">
+        <label for="title">Title</label><br />
+
+        <input type="hidden" id="id" name="id" value="<%= blog._id %>" />
+        <br />
+
+        <input type="text" id="title" name="title" value="<%= blog.title %>" />
+        <br />
+        <label for="snippet">Snippet</label><br />
+        <textarea name="snippet" id="snippet" cols="30" rows="5">
+ <%= blog.snippet %> </textarea
+        >
+        <br />
+        <label for="content">Content</label><br />
+        <textarea name="content" id="content" cols="30" rows="10">
+ <%= blog.content %></textarea
+        ><br />
+        <label for="topic">Topic</label><br />
         <select class="select" name="topic" id="topic">
-            <option value="food">Food</option>
-            <option value="finance">Finance</option>
-            <option value="lifestyle">Lifestyle</option>
-            <option value="tech">Technology</option>
-        </select><br>
-        <input class="btn" type="submit" value="update" name="submit">
-    </form>
+          <option value="food">Food</option>
+          <option value="finance">Finance</option>
+          <option value="lifestyle">Lifestyle</option>
+          <option value="tech">Technology</option></select
+        ><br />
+        <input class="btn" type="submit" value="update" name="submit" />
+      </form>
     </div>
     <%- include('../partials/footer.ejs') %>
-</body>
+  </body>
 </html>

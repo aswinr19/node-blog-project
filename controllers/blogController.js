@@ -31,15 +31,34 @@ const blogCreatePost = (req, res) => {
 };
 
 const blogUpdateget = (req, res) => {
-  res.render("blogs/update", { title: "Update Blog" });
+  const id = String(req.params.id);
+
+  Blog.findById(id)
+    .then((result) => {
+      res.render("blogs/update", { title: "Update Blog", blog: result });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 };
 
-const blogUpdatePost = (req, res) => {};
+const blogUpdatePost = async (req, res) => {
+  //console.log(req.body);
+
+  const { id, title, snippet, content, topic } = req.body;
+
+  const blog = await Blog.findById(id);
+
+  blog.overwrite({ title, snippet, content, topic });
+
+  await blog.save();
+
+  res.redirect("/blogs");
+};
 
 const blogShow = (req, res) => {
   const id = String(req.params.id);
 
- 1
   Blog.findById(id)
     .then((result) => {
       res.render("blogs/show", { title: "Show Blogs", blog: result });

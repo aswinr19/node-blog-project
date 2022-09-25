@@ -7,11 +7,11 @@ const { requireAuth } = require("../middleware/authMiddleware");
 
 router.get("/blogs", blogController.blogIndex);
 
-router.get("/blogs/create-blog", blogController.blogCreateGet);
+router.get("/blogs/create-blog",requireAuth, blogController.blogCreateGet);
 
-router.post("/blogs/create-blog", requireAuth, blogController.blogCreatePost);
+router.post("/blogs/create-blog",  blogController.blogCreatePost);
 
-router.get("/blogs/update-blog", blogController.blogUpdateget);
+router.get("/blogs/update-blog/:id", blogController.blogUpdateget);
 
 router.post("/blogs/update-blog", blogController.blogUpdatePost);
 
