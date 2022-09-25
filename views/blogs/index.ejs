@@ -8,7 +8,7 @@
     <div class="content grid">
       <% if(blogs.length > 0) %> <% blogs.forEach( blog=>{ %>
       <div class="post">
-        <a href="/blogs/show/<%= blog._id %>">
+        <a href="/blogs/show-blog/<%= blog._id %>">
           <h3 class="post-title"><%= blog.title %></h3>
           <div class="post-snippet"><%= blog.snippet %></div>
         </a>

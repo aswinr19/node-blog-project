@@ -15,6 +15,9 @@ router.get("/blogs/update-blog/:id", blogController.blogUpdateget);
 
 router.post("/blogs/update-blog", blogController.blogUpdatePost);
 
-router.get("/blogs/show/:id", blogController.blogShow);
+router.get("/blogs/show-blog/:id", blogController.blogShow);
+
+router.get("/blogs/delete-blog/:id", blogController.blogDelete);
+
 
 module.exports = router;

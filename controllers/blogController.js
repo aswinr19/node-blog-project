@@ -68,6 +68,17 @@ const blogShow = (req, res) => {
     });
 };
 
+const blogDelete = (req, res) => {
+  const id = String(req.params.id);
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      res.redirect("/blogs");
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
+
 module.exports = {
   blogIndex,
   blogCreateGet,
@@ -75,4 +86,5 @@ module.exports = {
   blogUpdateget,
   blogUpdatePost,
   blogShow,
+  blogDelete,
 };
