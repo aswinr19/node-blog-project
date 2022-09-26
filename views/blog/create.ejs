@@ -8,6 +8,8 @@
       <form action="/blogs/create-blog" method="POST">
         <label for="title">Title</label><br />
         <input type="text" id="title" name="title" /><br />
+        <input type="hidden" id="createdBy" name="createdBy" value="<%= user._id %>"/><br />
+        <input type="hidden" id="creatorName" name="creatorName" value="<%= user.fname %> <%= user.lname %>"/><br />
         <label for="snippet">Snippet</label><br />
         <textarea name="snippet" id="snippet" cols="30" rows="5"></textarea
         ><br />

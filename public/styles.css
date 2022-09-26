@@ -41,9 +41,11 @@ a{
 	font-weight: bold;
 }
 
-.nav ul li a:hover {
+a:hover {
 	color: #06d6a0;
 }
+
+
 
 .btn{
 	margin: 10px;

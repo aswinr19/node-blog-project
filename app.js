@@ -10,6 +10,7 @@ const app = express();
 const blogRoutes = require("./routes/blogRoutes");
 const authRoutes = require("./routes/authRoutes");
 const { checkUser } = require("./middleware/authMiddleware");
+const { lookupService } = require("dns");
 const PORT = 3000;
 
 const dbURI = `mongodb+srv://${process.env.DBUser}:${process.env.DBPass}@node-blog-project.gycq4so.mongodb.net/?retryWrites=true&w=majority`;
@@ -49,6 +50,7 @@ app.get("/about", (req, res) => {
 
 
 
+
 //blog routes
 app.use(blogRoutes, authRoutes);
 
@@ -56,3 +58,4 @@ app.use(blogRoutes, authRoutes);
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
+

@@ -89,10 +89,22 @@ const userLogoutGet = (req, res) => {
   res.redirect("/blogs");
 };
 
+const userShow = (req,res) => {
+
+  const id = String(req.params.id);
+
+  User.findById(id).then( (result) => {
+    res.render("auth/show",{ title: "User Profile", person : result });
+  }).catch( (err) => {
+    console.log(err);
+  });
+};
+
 module.exports = {
   userSigninGet,
   userSigninPost,
   userSignupGet,
   userSignupPost,
   userLogoutGet,
+  userShow
 };

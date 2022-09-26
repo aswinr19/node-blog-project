@@ -4,7 +4,7 @@ const blogIndex = (req, res) => {
   Blog.find()
     .then((result) => {
       // res.send(result);
-      res.render("blogs/index", { title: "Blogs", blogs: result });
+      res.render("blog/index", { title: "Blogs", blogs: result });
     })
     .catch((err) => {
       console.log(err);
@@ -12,7 +12,7 @@ const blogIndex = (req, res) => {
 };
 
 const blogCreateGet = (req, res) => {
-  res.render("blogs/create", { title: "Create Blog" });
+  res.render("blog/create", { title: "Create Blog" });
 };
 
 const blogCreatePost = (req, res) => {
@@ -35,7 +35,7 @@ const blogUpdateget = (req, res) => {
 
   Blog.findById(id)
     .then((result) => {
-      res.render("blogs/update", { title: "Update Blog", blog: result });
+      res.render("blog/update", { title: "Update Blog", blog: result });
     })
     .catch((err) => {
       res.send(err);
@@ -58,10 +58,11 @@ const blogUpdatePost = async (req, res) => {
 
 const blogShow = (req, res) => {
   const id = String(req.params.id);
+ 
 
   Blog.findById(id)
     .then((result) => {
-      res.render("blogs/show", { title: "Show Blogs", blog: result });
+      res.render("blog/show", { title: "Show Blogs", blog: result });
     })
     .catch((err) => {
       res.send(err);
