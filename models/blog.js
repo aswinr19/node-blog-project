@@ -8,30 +8,31 @@ const blogSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      minlength: 5,
+      minlength: [8, "Minimum title length is 5 characters"],
     },
     snippet: {
       type: String,
-      required: true,
+      required: [true, "Please enter an snippet"],
+      minlength: [20, "Minimum snippet length is 20 characters"],
     },
 
     content: {
       type: String,
-      required: true,
-      minlength: 100,
+      required: [true, "Please enter an content"],
+      minlength: [100, "Minimum content length is 100 characters"],
     },
     topic: {
       type: String,
-      required: true,
+      required: [true, "Please enter an topic"],
     },
     creatorName: {
       type: String,
-      required: true,
+      required: [true, "Creator name can't be null"],
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: [true, "Created by can't be null"],
     },
   },
   { timestamps: true }
