@@ -5,7 +5,6 @@ const handleErrors = (err) => {
 
   let errors = { title: "", snippet: "", content: "", topic: "" };
 
-  
   //duplicate error
 
   if (err.code === 11000) {
@@ -83,15 +82,27 @@ const blogUpdateget = (req, res) => {
 const blogUpdatePost = async (req, res) => {
   //console.log(req.body);
 
-  const { id, title, snippet, content, topic } = req.body;
+  const { id, title, snippet, content, topic, createdBy, creatorName } =
+    req.body;
 
-  const blog = await Blog.findById(id);
+  // const blog = await Blog.findById(id);
 
-  blog.overwrite({ title, snippet, content, topic });
+  // blog.overwrite({ title, snippet, content, topic });
 
-  await blog.save();
+  // await blog.save();
 
-  res.redirect("/blogs");
+  // res.redirect("/blogs");
+
+  try {
+    const blog = await Blog.findById(id);
+    blog.overwrite({ title, snippet, content, topic, createdBy, creatorName });
+    await blog.save();
+
+    res.status(201).json({ blog: blog._id });
+  } catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
+  }
 };
 
 const blogShow = (req, res) => {

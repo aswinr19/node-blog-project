@@ -7,6 +7,18 @@
 
     <div class="form">
       <form action="/blogs/update-blog" method="POST">
+        <input
+          type="hidden"
+          id="createdBy"
+          name="createdBy"
+          value="<%= user._id %>"
+        /><br />
+        <input
+          type="hidden"
+          id="creatorName"
+          name="creatorName"
+          value="<%= user.fname %> <%= user.lname %>"
+        /><br />
         <label for="title">Title</label><br />
 
         <input type="hidden" id="id" name="id" value="<%= blog._id %>" />
@@ -14,15 +26,20 @@
 
         <input type="text" id="title" name="title" value="<%= blog.title %>" />
         <br />
+        <span class="error" id="titleErr"></span><br />
+
         <label for="snippet">Snippet</label><br />
         <textarea name="snippet" id="snippet" cols="30" rows="5">
  <%= blog.snippet %> </textarea
         >
         <br />
+        <span class="error" id="snippetErr"></span><br />
+
         <label for="content">Content</label><br />
         <textarea name="content" id="content" cols="30" rows="10">
  <%= blog.content %></textarea
         ><br />
+        <span class="error" id="contentErr"></span><br />
         <label for="topic">Topic</label><br />
         <select class="select" name="topic" id="topic">
           <option value="food">Food</option>
@@ -30,8 +47,67 @@
           <option value="lifestyle">Lifestyle</option>
           <option value="tech">Technology</option></select
         ><br />
-        <input class="btn" type="submit" value="update" name="submit" />
+        <span class="error" id="topicErr"></span><br />
+        <button>Create</button>
       </form>
+
+      <script>
+        const form = document.querySelector("form");
+        const titleErr = document.getElementById("titleErr");
+        const snippetErr = document.getElementById("snippetErr");
+        const contentErr = document.getElementById("contentErr");
+        const topicErr = document.getElementById("topicErr");
+
+        const btn = document.querySelector("button");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const id = document.getElementById("id").value;
+          const title = document.getElementById("title").value;
+          const snippet = document.getElementById("snippet").value;
+          const content = document.getElementById("content").value;
+          const topic = document.getElementById("topic").value;
+          const creatorName = document.getElementById("creatorName").value;
+          const createdBy = document.getElementById("createdBy").value;
+
+          console.log(title, snippet, content, topic);
+          titleErr.textContent = "";
+          snippetErr.textContent = "";
+          contentErr.textContent = "";
+          topicErr.textContent = "";
+
+          try {
+            const res = await fetch("/blogs/update-blog", {
+              method: "POST",
+              body: JSON.stringify({
+                id,
+                title,
+                snippet,
+                content,
+                topic,
+                creatorName,
+                createdBy,
+              }),
+              headers: { "Content-Type": "application/json" },
+            });
+            const data = await res.json();
+            console.log(data);
+
+            if (data.errors) {
+              titleErr.textContent = data.errors.title;
+              snippetErr.textContent = data.errors.snippet;
+              contentErr.textContent = data.errors.content;
+              topicErr.textContent = data.errors.topic;
+            }
+            if (data.blog) {
+              location.assign("/blogs");
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        });
+      </script>
     </div>
     <%- include('../partials/footer.ejs') %>
   </body>
