@@ -7,7 +7,7 @@ const blogSchema = new Schema(
     title: {
       type: String,
       required: true,
-      unique : true,
+      unique: true,
       minlength: 5,
     },
     snippet: {
@@ -30,8 +30,9 @@ const blogSchema = new Schema(
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    }
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );

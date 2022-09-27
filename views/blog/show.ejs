@@ -4,15 +4,17 @@
   <body>
     <%- include('../partials/nav.ejs') %>
 
-    <h3 class="post-title"><%= blog.title %> | <%= blog.topic %> | <%= blog.creatorName %></h3>
+    <h3 class="post-title">
+      <%= blog.title %> | <%= blog.topic %> | <%= blog.creatorName %>
+    </h3>
     <div class="post-snippet"><%= blog.snippet %></div>
     <div class="post-content"><%= blog.content %></div>
-    <% if(user._id == blog.createdBy){ %>
+    
     <div class="links">
       <a href="/blogs/update-blog/<%= blog._id %>"> Update</a>
       <a href="/blogs/delete-blog/<%= blog._id %>"> Delete</a>
     </div>
-    <% } %>
+    <% if(!user._id == blog.createdBy){ %> <% } %>
     <div class="comment">
       <h4>Comments</h4>
       <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
@@ -26,5 +28,3 @@
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
-
-

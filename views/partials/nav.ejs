@@ -8,12 +8,12 @@
 
     <% if(!user) { %>
     <li>
-      <a href="/signin">Signin</a>
+      <a href="/users/signin">Signin</a>
     </li>
     <% } else { %>
     <li> <%= user.fname %> <%= user.lname %></li>
     <li>
-      <a href="/logout">Logout</a>
+      <a href="/users/logout">Logout</a>
     </li>
     <% } %>
   </ul>

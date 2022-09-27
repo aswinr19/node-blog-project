@@ -1,5 +1,35 @@
 const Blog = require("../models/blog");
 
+const handleErrors = (err) => {
+  console.log(err.message, err.code);
+
+  let errors = { title: "", snippet: "", content: "", topic: "" };
+
+  //
+
+  if (err.message === "incorrect email") {
+    errors.email = "that email is not registered";
+  }
+
+  //incorrect password
+  if (err.message === "incorrect password") {
+    errors.password = "that password is incorrect";
+  }
+  //duplicate error
+
+  if (err.code === 11000) {
+    errors.email = " that email is already registered";
+    return errors;
+  }
+  //validating errors
+  if (err.message.includes("User validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+  return errors;
+};
+
 const blogIndex = (req, res) => {
   Blog.find()
     .then((result) => {
@@ -15,18 +45,35 @@ const blogCreateGet = (req, res) => {
   res.render("blog/create", { title: "Create Blog" });
 };
 
-const blogCreatePost = (req, res) => {
-  const blog = new Blog(req.body);
+const blogCreatePost = async (req, res) => {
+  // const blog = new Blog(req.body);
 
-  blog
-    .save()
-    .then((result) => {
-      res.redirect("/blogs");
-    })
-    .catch((err) => {
-      console.log(err);
+  // blog
+  //   .save()
+  //   .then((result) => {
+  //     res.redirect("/blogs");
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  const { title, snippet, content, topic, createdBy, creatorName } = req.body;
+
+  try {
+    const blog = await Blog.create({
+      title,
+      snippet,
+      content,
+      topic,
+      createdBy,
+      creatorName,
     });
 
+    res.status(201).json({ blog: blog._id });
+  } catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
+  }
   // console.log(req.body);
 };
 
@@ -58,7 +105,6 @@ const blogUpdatePost = async (req, res) => {
 
 const blogShow = (req, res) => {
   const id = String(req.params.id);
- 
 
   Blog.findById(id)
     .then((result) => {
