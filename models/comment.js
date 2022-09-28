@@ -17,7 +17,13 @@ const commentSchema = new Schema(
       ref: "User",
       required: [true, "Created by can't be null"],
     },
+    belongsTo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog",
+      required: [true, "Belongs to can't be null"],
+    },
   },
+
   { timestamps: true }
 );
 
