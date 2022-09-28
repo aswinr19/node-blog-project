@@ -16,6 +16,42 @@ a{
 	color: #000000;
 }
 
+.grid-container{
+
+	display: grid;
+	max-width: 1200px;
+	grid-template-columns: repeat(4,1fr);
+	margin: 0 auto;
+}
+.post{
+	width: 300px;
+}
+
+.post-links{
+	grid-column: 2/4;
+	margin: 0 auto;
+}
+.post-author-avatar{
+	height: 20px;
+	border-radius: 50px;
+
+}
+
+.post-title{
+	grid-column: 2/4;
+}
+.post-snippet{
+	grid-column: 2/4;
+	text-align: justify;
+}
+
+.post-content{
+	grid-column: 2/4;
+	text-align: justify;
+}
+.post-comment-form{
+	grid-column: 2/4;
+}
 .nav{
 	display: flex;
 	align-items: center;

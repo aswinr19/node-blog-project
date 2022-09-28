@@ -5,7 +5,7 @@
     <%- include('../partials/nav.ejs') %>
     <h2 class="title">Blogs</h2>
 
-    <div class="content grid">
+    <div class="grid-container">
       <% if(blogs.length > 0) %> <% blogs.forEach( blog=>{ %>
       <div class="post">
         <a href="/blogs/show-blog/<%= blog._id %>">
@@ -18,3 +18,9 @@
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
+
+
+
+
+
+

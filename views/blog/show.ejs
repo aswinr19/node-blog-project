@@ -4,18 +4,26 @@
   <body>
     <%- include('../partials/nav.ejs') %>
 
-    <h3 class="post-title">
-      <%= blog.title %> | <%= blog.topic %> | <%= blog.creatorName %>
-    </h3>
-    <div class="post-snippet"><%= blog.snippet %></div>
-    <div class="post-content"><%= blog.content %></div>
+    <div class="grid-container">
+      <h4 class="post-title">
+        <img class="post-author-avatar"
+          src="https://avatars.dicebear.com/api/micah/<%= blog.creatorName %>.svg"
+          alt="avatar"
+        />
+        <%= blog.creatorName %>
+      </h4>
+      <h3 class="post-title"><%= blog.title %> | <%= blog.topic %></h3>
+      <div class="post-snippet"><%= blog.snippet %></div>
+      <div class="post-content"><%= blog.content %></div>
 
-    <div class="links">
-      <a href="/blogs/update-blog/<%= blog._id %>"> Update</a>
-      <a href="/blogs/delete-blog/<%= blog._id %>"> Delete</a>
+      <div class="post-links">
+        <a href="/blogs/update-blog/<%= blog._id %>"> Update</a>
+        <a href="/blogs/delete-blog/<%= blog._id %>"> Delete</a>
+      </div>
     </div>
 
-    <div class="comment">
+    <div class="grid-container">
+    <div class="post-comment-form">
       <h4>Comments</h4>
       <form>
         <input
@@ -38,6 +46,7 @@
       </form>
       <br /><br /><br />
     </div>
+  </div>
     <script>
       const form = document.querySelector("form");
       const commentErr = document.getElementById("commentErr");
@@ -75,10 +84,10 @@
         } catch (err) {
           console.log(err);
         }
-
-
       });
     </script>
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
+
+

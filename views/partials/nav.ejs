@@ -11,7 +11,9 @@
       <a href="/users/signin">Signin</a>
     </li>
     <% } else { %>
-    <li> <%= user.fname %> <%= user.lname %></li>
+    <li> 
+      <a href="/users/<%= user._id %>"><%= user.fname %> <%= user.lname %></a>
+    </li>
     <li>
       <a href="/users/logout">Logout</a>
     </li>
