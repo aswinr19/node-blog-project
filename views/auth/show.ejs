@@ -3,8 +3,20 @@
   <%- include('../partials/head.ejs') %>
   <body>
     <%- include('../partials/nav.ejs') %>
-    <h1>User</h1>
-    <p> <%= person.fname %> </p>
+
+    <div class="grid-container">
+      <div class="profile-avatar-container">
+        <img
+        class="profile-avatar"
+        src="https://avatars.dicebear.com/api/micah/<%= person.fname %> <%= person.lname %>.svg"
+        alt="avatar"
+      />
+      </div>
+     
+      <h3 class="profile-name"><%= person.fname %> <%= person.lname %></h3>
+      <h4 class="profile-email"><%= person.email %></h4>
+    </div>
+
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
