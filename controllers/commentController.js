@@ -15,9 +15,9 @@ const handleErrors = (err) => {
 };
 
 const commentIndex = (req, res) => {
-  const { belongsTo } = req.body;
+  const id = String(req.params.id);
 
-  Comment.find(belongsTo)
+  Comment.find({ belongsTo : id})
     .then((result) => {
       console.log(result);
     })

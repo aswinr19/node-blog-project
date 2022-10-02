@@ -1,5 +1,6 @@
 const Blog = require("../models/blog");
 
+
 const handleErrors = (err) => {
   console.log(err.message, err.code);
 
@@ -23,7 +24,6 @@ const handleErrors = (err) => {
 const blogIndex = (req, res) => {
   Blog.find()
     .then((result) => {
-      // res.send(result);
       res.render("blog/index", { title: "Blogs", blogs: result });
     })
     .catch((err) => {
@@ -36,17 +36,6 @@ const blogCreateGet = (req, res) => {
 };
 
 const blogCreatePost = async (req, res) => {
-  // const blog = new Blog(req.body);
-
-  // blog
-  //   .save()
-  //   .then((result) => {
-  //     res.redirect("/blogs");
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
   const { title, snippet, content, topic, createdBy, creatorName } = req.body;
 
   try {
@@ -64,7 +53,6 @@ const blogCreatePost = async (req, res) => {
     const errors = handleErrors(err);
     res.status(400).json({ errors });
   }
-  // console.log(req.body);
 };
 
 const blogUpdateget = (req, res) => {
@@ -80,18 +68,8 @@ const blogUpdateget = (req, res) => {
 };
 
 const blogUpdatePost = async (req, res) => {
-  //console.log(req.body);
-
   const { id, title, snippet, content, topic, createdBy, creatorName } =
     req.body;
-
-  // const blog = await Blog.findById(id);
-
-  // blog.overwrite({ title, snippet, content, topic });
-
-  // await blog.save();
-
-  // res.redirect("/blogs");
 
   try {
     const blog = await Blog.findById(id);
@@ -105,12 +83,13 @@ const blogUpdatePost = async (req, res) => {
   }
 };
 
-const blogShow = (req, res) => {
+const blogShow = async (req, res) => {
   const id = String(req.params.id);
+
 
   Blog.findById(id)
     .then((result) => {
-      res.render("blog/show", { title: "Show Blogs", blog: result });
+      res.render("blog/show", { title: "Show Blog", blog: result });
     })
     .catch((err) => {
       res.send(err);
