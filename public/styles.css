@@ -59,7 +59,8 @@ a:hover {
   height: 40px;
   border-radius: 50px;
 }
-/* 
+
+
 .grid-container {
   display: grid;
   max-width: 1200px;
@@ -68,6 +69,7 @@ a:hover {
   text-align: justify;
   gap: 20px;
 }
+
 .post {
   width: 300px;
 }
@@ -144,7 +146,6 @@ a:hover {
 }
 
 
-*/
 
 .footer {
   position: absolute;
