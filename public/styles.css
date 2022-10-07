@@ -60,7 +60,6 @@ a:hover {
   border-radius: 50px;
 }
 
-
 .grid-container {
   display: grid;
   max-width: 1200px;
@@ -78,7 +77,6 @@ a:hover {
   grid-column: 2/4;
   margin: 0 auto;
 }
-
 
 .post-title {
   grid-column: 2/4;
@@ -115,13 +113,12 @@ a:hover {
   grid-column: 2/4;
   margin: 0 auto;
 }
-.about-one{
+.about-one {
   grid-column: 2/4;
 }
-.about-two{
+.about-two {
   grid-column: 2/4;
 }
-
 
 .btn {
   margin: 10px;
@@ -145,16 +142,17 @@ a:hover {
   transform: translate(-50%, -50%);
 }
 
-
-
+.comments li {
+  list-style: none;
+  padding: 10px;
+}
 .footer {
+  padding-top: 50px;
   position: absolute;
-
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 12px;
 }
-
 
 .post-snippet-index {
   overflow: hidden;
@@ -163,7 +161,7 @@ a:hover {
   white-space: nowrap;
 }
 
-.post-title-index{
+.post-title-index {
   overflow: hidden;
   max-width: 50ch;
   text-overflow: ellipsis;

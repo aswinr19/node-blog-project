@@ -47,6 +47,7 @@
             value="<%= user.fname %> <%= user.lname %>"
           />
 
+          <input id="belongsTo" type="hidden" value="<%= blog._id %>" />
           <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
           <br />
           <span class="error" id="commentErr"></span><br />
@@ -55,36 +56,47 @@
         <br />
         <br />
         <h4>Comments</h4>
-        <br>
+        <br />
         <ul class="comments"></ul>
 
         <%} %>
         <br /><br /><br />
       </div>
     </div>
+
     <script>
-      const form = document.querySelector("form");
-      const commentErr = document.getElementById("commentErr");
-      const comment = document.getElementById("comment");
-      const commentsSection = document.querySelector(".comments");
-      let allComment = "";
+      const belongsTo = document.getElementById("belongsTo").value;
+      const commentEl = document.querySelector(".comments");
+      let commentInptEl = document.getElementById("comment");
+      let commentList = "";
+      commentInptEl.value =  ""
 
       window.addEventListener("load", async (e) => {
         try {
-          const resposnse = await fetch("/comments/6331c576cd226729678234d1");
+          const resposnse = await fetch(`/comments/${belongsTo}`);
 
           const data = await resposnse.json();
           // console.log(data);
 
-          data.comments.forEach((com) => {
-            allComment += "<li>" + com.comment + "</li>";
-          });
+          if (data.comments.length > 0) {
+            data.comments.forEach((com) => {
+              commentList += "<li>" + com.comment +"</li>";
+            });
+          } else {
+            commentList += "Nothing to display!";
+          }
 
-          commentsSection.innerHTML = allComment;
+          commentEl.innerHTML = commentList;
         } catch (err) {
           console.log(err);
         }
       });
+    </script>
+
+    <script>
+      const form = document.querySelector("form");
+      const commentErr = document.getElementById("commentErr");
+      
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -95,7 +107,7 @@
         const belongsTo = document.getElementById("belongsTo").value;
 
         console.log(comment, creatorName, createdBy);
-        comment.textContent = "";
+     
 
         try {
           const res = await fetch("/comments/create-comment", {
@@ -115,6 +127,9 @@
 
           if (data.errors) {
             commentErr.textContent = data.errors.comment;
+          }
+          else{
+            location.reload(); 
           }
         } catch (err) {
           console.log(err);
