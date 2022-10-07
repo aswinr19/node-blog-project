@@ -1,7 +1,7 @@
 const Comment = require("../models/comment");
 
 const handleErrors = (err) => {
-  console.log(err.message, err.code);
+  // console.log(err.message, err.code);
 
   let errors = { comment: "", createdBy: "", creatorName: "", belongsTo: "" };
 
@@ -28,11 +28,11 @@ const commentIndex = (req, res) => {
  
 };
 
-const commentCreatePost = (req, res) => {
+const commentCreatePost = async (req, res) => {
   const { comment, creatorName, createdBy, belongsTo } = req.body;
 
   try {
-    const newComment = Comment.create({
+    const newComment = await Comment.create({
       comment,
       creatorName,
       createdBy,

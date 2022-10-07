@@ -57,7 +57,7 @@
         <br />
         <h4>Comments</h4>
         <br />
-        <ul class="comments"></ul>
+        <div class="comments"></div>
 
         <%} %>
         <br /><br /><br />
@@ -68,8 +68,7 @@
       const belongsTo = document.getElementById("belongsTo").value;
       const commentEl = document.querySelector(".comments");
       let commentInptEl = document.getElementById("comment");
-      let commentList = "";
-      commentInptEl.value =  ""
+      commentInptEl.value = "";
 
       window.addEventListener("load", async (e) => {
         try {
@@ -80,10 +79,21 @@
 
           if (data.comments.length > 0) {
             data.comments.forEach((com) => {
-              commentList += "<li>" + com.comment +"</li>";
+              const cmnt = document.createElement("div");
+              cmnt.innerHTML = `<img
+              class="cmnt-author-avatar"
+              src="https://avatars.dicebear.com/api/micah/${
+                com.creatorName
+              }.svg"
+              alt="avatar" />
+              <span class="comment-author-name">${com.creatorName}</span>
+              <span class="comment-created-date"
+          >${com.createdAt.toString().substring(2 , 10)}
+        </span>
+              <p  class="comment-subject">${com.comment}</p>`;
+              commentEl.appendChild(cmnt);
             });
           } else {
-            commentList += "Nothing to display!";
           }
 
           commentEl.innerHTML = commentList;
@@ -96,7 +106,6 @@
     <script>
       const form = document.querySelector("form");
       const commentErr = document.getElementById("commentErr");
-      
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -107,7 +116,6 @@
         const belongsTo = document.getElementById("belongsTo").value;
 
         console.log(comment, creatorName, createdBy);
-     
 
         try {
           const res = await fetch("/comments/create-comment", {
@@ -127,9 +135,8 @@
 
           if (data.errors) {
             commentErr.textContent = data.errors.comment;
-          }
-          else{
-            location.reload(); 
+          } else {
+            location.reload();
           }
         } catch (err) {
           console.log(err);

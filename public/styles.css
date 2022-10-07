@@ -167,3 +167,21 @@ a:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.cmnt-author-avatar {
+  height: 18px;
+  border-radius: 50px;
+}
+
+.comment-author-name {
+  font-size: 13px;
+}
+
+.comment-created-date {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.comment-subject {
+  font-style: italic;
+}
