@@ -15,15 +15,17 @@ const handleErrors = (err) => {
 };
 
 const commentIndex = (req, res) => {
-  const id = String(req.params.id);
+  const id = req.params.id;
 
   Comment.find({ belongsTo : id})
     .then((result) => {
-      console.log(result);
+      res.status(201).json({ comments: result });
     })
     .catch((err) => {
       res.status(400).json({ err });
     });
+
+ 
 };
 
 const commentCreatePost = (req, res) => {
@@ -38,6 +40,7 @@ const commentCreatePost = (req, res) => {
     });
 
     res.status(201).json({ comment: newComment._id });
+    
   } catch (err) {
     const errors = handleErrors(err);
     res.status(400).json({ errors });

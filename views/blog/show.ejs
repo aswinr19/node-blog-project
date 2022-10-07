@@ -1,89 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head.ejs') %>
+  <%- include('../partials/head.ejs') %>
 
-<body>
-  <%- include('../partials/nav.ejs') %>
+  <body>
+    <%- include('../partials/nav.ejs') %>
 
-  <div class="grid-container">
-    <div class="post-author">
-      <img class="post-author-avatar" src="https://avatars.dicebear.com/api/micah/<%= blog.creatorName %>.svg"
-        alt="avatar" />
-   
-      <span class="post-author-name"><%= blog.creatorName %></span>
-      <span class="post-created-date"><%= blog.createdAt.toString().substring(3,10) %> </span>
+    <div class="grid-container">
+      <div class="post-author">
+        <img
+          class="post-author-avatar"
+          src="https://avatars.dicebear.com/api/micah/<%= blog.creatorName %>.svg"
+          alt="avatar"
+        />
+
+        <span class="post-author-name"><%= blog.creatorName %></span>
+        <span class="post-created-date"
+          ><%= blog.createdAt.toString().substring(3,10) %>
+        </span>
+      </div>
+      <h3 class="post-title"><%= blog.title %> | <%= blog.topic %></h3>
+      <div class="post-snippet"><%= blog.snippet %></div>
+      <div class="post-content"><%= blog.content %></div>
+
+      <div class="post-links">
+        <a href="/blogs/update-blog/<%= blog._id %>"> Update</a>
+        <a href="/blogs/delete-blog/<%= blog._id %>"> Delete</a>
+      </div>
     </div>
-    <h3 class="post-title"><%= blog.title %> | <%= blog.topic %></h3>
-    <div class="post-snippet"><%= blog.snippet %></div>
-    <div class="post-content"><%= blog.content %></div>
 
-    <div class="post-links">
-      <a href="/blogs/update-blog/<%= blog._id %>"> Update</a>
-      <a href="/blogs/delete-blog/<%= blog._id %>"> Delete</a>
+    <div class="grid-container">
+      <div class="post-comment-form">
+        <h4>Post comments</h4>
+        <% if(user) { %>
+
+        <form>
+          <input
+            type="hidden"
+            id="createdBy"
+            name="createdBy"
+            value="<%= user._id %>"
+          />
+          <input
+            type="hidden"
+            id="creatorName"
+            name="creatorName"
+            value="<%= user.fname %> <%= user.lname %>"
+          />
+
+          <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+          <br />
+          <span class="error" id="commentErr"></span><br />
+          <button>Post comment</button>
+        </form>
+        <br />
+        <br />
+        <h4>Comments</h4>
+        <br>
+        <ul class="comments"></ul>
+
+        <%} %>
+        <br /><br /><br />
+      </div>
     </div>
-  </div>
+    <script>
+      const form = document.querySelector("form");
+      const commentErr = document.getElementById("commentErr");
+      const comment = document.getElementById("comment");
+      const commentsSection = document.querySelector(".comments");
+      let allComment = "";
 
-  <div class="grid-container">
-    <div class="post-comment-form">
-      <h4>Comments</h4>
-      <% if(user) { %>
+      window.addEventListener("load", async (e) => {
+        try {
+          const resposnse = await fetch("/comments/6331c576cd226729678234d1");
 
-      <form>
-        <input type="hidden" id="createdBy" name="createdBy" value="<%= user._id %>" />
-        <input type="hidden" id="creatorName" name="creatorName" value="<%= user.fname %> <%= user.lname %>" />
-        <input type="hidden" id="belongsTo" value="<%= blog._id %>" />
+          const data = await resposnse.json();
+          // console.log(data);
 
-        <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
-        <span class="error" id="commentErr"></span><br />
-        <button>Post comment</button>
-      </form>
-      <%} %>
-      <br /><br /><br />
-    </div>
-  </div>
-  <script>
-    const form = document.querySelector("form");
-    const commentErr = document.getElementById("commentErr");
-    const comment = document.getElementById("comment");
+          data.comments.forEach((com) => {
+            allComment += "<li>" + com.comment + "</li>";
+          });
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const comment = document.getElementById("comment").value;
-      const creatorName = document.getElementById("creatorName").value;
-      const createdBy = document.getElementById("createdBy").value;
-      const belongsTo = document.getElementById("belongsTo").value;
-
-      console.log(comment, creatorName, createdBy);
-      comment.textContent = "";
-
-      try {
-        const res = await fetch("/comments/create-comment", {
-          method: "POST",
-          body: JSON.stringify({
-            comment,
-            creatorName,
-            createdBy,
-            belongsTo,
-          }),
-          headers: {
-            "Content-Type": "application/json"
-          },
-        });
-        const data = await res.json();
-        console.log(data);
-
-        if (data.errors) {
-          commentErr.textContent = data.errors.comment;
+          commentsSection.innerHTML = allComment;
+        } catch (err) {
+          console.log(err);
         }
-        
-      } catch (err) {
-        console.log(err);
-      }
-    });
+      });
 
-  </script>
-  <%- include('../partials/footer.ejs') %>
-</body>
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
+        const comment = document.getElementById("comment").value;
+        const creatorName = document.getElementById("creatorName").value;
+        const createdBy = document.getElementById("createdBy").value;
+        const belongsTo = document.getElementById("belongsTo").value;
+
+        console.log(comment, creatorName, createdBy);
+        comment.textContent = "";
+
+        try {
+          const res = await fetch("/comments/create-comment", {
+            method: "POST",
+            body: JSON.stringify({
+              comment,
+              creatorName,
+              createdBy,
+              belongsTo,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await res.json();
+          console.log(data);
+
+          if (data.errors) {
+            commentErr.textContent = data.errors.comment;
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
+    <%- include('../partials/footer.ejs') %>
+  </body>
 </html>
