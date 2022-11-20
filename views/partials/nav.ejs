@@ -2,19 +2,19 @@
   <ul>
     <li class="nav-main"><a href="/">Node Blog</a></li>
 
-    <li><a href="/blogs/create-blog">Create</a></li>
+    <li class="nav-elm"><a href="/blogs/create-blog">Create</a></li>
 
-    <li><a href="/about">About</a></li>
+    <li class="nav-elm"><a href="/about">About</a></li>
 
     <% if(!user) { %>
-    <li>
+    <li class="nav-elm">
       <a href="/users/signin">Signin</a>
     </li>
     <% } else { %>
-    <li> 
+    <li class="nav-elm" > 
       <a href="/users/<%= user._id %>"><%= user.fname %> <%= user.lname %></a>
     </li>
-    <li>
+    <li class="nav-elm" >
       <a href="/users/logout">Logout</a>
     </li>
     <% } %>
