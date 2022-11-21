@@ -6,6 +6,8 @@
     <h2 class="title">Update blog</h2>
 
     <div class="form">
+      <div></div>
+     
       <form action="/blogs/update-blog" method="POST">
         <input
           type="hidden"
@@ -19,7 +21,7 @@
           name="creatorName"
           value="<%= user.fname %> <%= user.lname %>"
         /><br />
-        <label for="title">Title</label><br />
+        <label for="title">Title</label>
 
         <input type="hidden" id="id" name="id" value="<%= blog._id %>" />
         <br />
@@ -29,15 +31,13 @@
         <span class="error" id="titleErr"></span><br />
 
         <label for="snippet">Snippet</label><br />
-        <textarea name="snippet" id="snippet" cols="30" rows="5">
- <%= blog.snippet %> </textarea
-        >
+        <textarea name="snippet" id="snippet" cols="30" rows="5"><%=blog.snippet%></textarea>
+
         <br />
         <span class="error" id="snippetErr"></span><br />
 
         <label for="content">Content</label><br />
-        <textarea name="content" id="content" cols="30" rows="10">
- <%= blog.content %></textarea
+        <textarea name="content" id="content" cols="30" rows="10"><%=blog.content%></textarea
         ><br />
         <span class="error" id="contentErr"></span><br />
         <label for="topic">Topic</label><br />
@@ -48,9 +48,10 @@
           <option value="tech">Technology</option></select
         ><br />
         <span class="error" id="topicErr"></span><br />
-        <button>Update</button>
+        <button class="post-update-btn">Update</button>
       </form>
-
+      <div></div>
+    </div>
       <script>
         const form = document.querySelector("form");
         const titleErr = document.getElementById("titleErr");
@@ -108,7 +109,7 @@
           }
         });
       </script>
-    </div>
+    
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

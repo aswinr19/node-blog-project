@@ -21,7 +21,7 @@ a {
 
 @media only screen and (min-width: 350px) {
   body {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .title {
@@ -64,16 +64,27 @@ a {
     font-size: 18px;
   }
 
-
-  .post-author{
-
-    font-size: 18px;
+  .post-author {
+    font-size: 15px;
   }
-  .post-author-avatar{
-    width: 20px;
+  .post-content {
+    margin-top: 25px;
+    padding-bottom: 25px;
+    text-align: justify;
+  }
+  .post-author-avatar {
+    width: 17px;
     border-radius: 50px;
   }
 
+  .post-links a {
+    padding: 1px;
+    color: #8e8e93;
+  }
+
+  .post-comment-btn {
+    padding: 10px 20px;
+  }
   .cmnt-author-avatar {
     height: 18px;
     border-radius: 50px;
@@ -92,6 +103,38 @@ a {
     font-style: italic;
   }
 
+  .form {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .form label {
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .form input,
+  textarea,
+  select,
+  button {
+    font-size: 18px;
+  }
+
+  .post-create-btn {
+    padding: 10px 20px;
+  }
+
+  .post-update-btn {
+    padding: 10px 20px;
+  }
+
+  .user-signin-btn {
+    padding: 10px 15px;
+  }
+
+  .user-signup-btn {
+    padding: 10px 15px;
+  }
 }
 
 /* tablets */

@@ -5,6 +5,7 @@
     <%- include('../partials/nav.ejs') %>
     <h2 class="title">Create a new blog</h2>
     <div class="form">
+      <div></div>
       <form action="/blogs/create-blog" method="POST">
         <label for="title">Title</label><br />
         <input type="text" id="title" name="title" /><br />
@@ -38,65 +39,67 @@
           <option value="tech">Technology</option></select
         ><br />
         <span class="error" id="topicErr"></span><br />
-        <button>Create</button>
+        <button class="post-create-btn">Create</button>
       </form>
 
-      <script>
-        const form = document.querySelector("form");
-        const titleErr = document.getElementById("titleErr");
-        const snippetErr = document.getElementById("snippetErr");
-        const contentErr = document.getElementById("contentErr");
-        const topicErr = document.getElementById("topicErr");
-
-        const btn = document.querySelector("button");
-
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const title = document.getElementById("title").value;
-          const snippet = document.getElementById("snippet").value;
-          const content = document.getElementById("content").value;
-          const topic = document.getElementById("topic").value;
-          const creatorName = document.getElementById("creatorName").value;
-          const createdBy = document.getElementById("createdBy").value;
-
-          console.log(title, snippet, content, topic, creatorName, createdBy);
-          titleErr.textContent = "";
-          snippetErr.textContent = "";
-          contentErr.textContent = "";
-          topicErr.textContent = "";
-
-          try {
-            const res = await fetch("/blogs/create-blog", {
-              method: "POST",
-              body: JSON.stringify({
-                title,
-                snippet,
-                content,
-                topic,
-                creatorName,
-                createdBy,
-              }),
-              headers: { "Content-Type": "application/json" },
-            });
-            const data = await res.json();
-            console.log(data);
-
-            if (data.errors) {
-              titleErr.textContent = data.errors.title;
-              snippetErr.textContent = data.errors.snippet;
-              contentErr.textContent = data.errors.content;
-              topicErr.textContent = data.errors.topic;
-            }
-            if (data.blog) {
-              location.assign("/blogs");
-            }
-          } catch (err) {
-            console.log(err);
-          }
-        });
-      </script>
+      <div></div>
     </div>
+    <script>
+      const form = document.querySelector("form");
+      const titleErr = document.getElementById("titleErr");
+      const snippetErr = document.getElementById("snippetErr");
+      const contentErr = document.getElementById("contentErr");
+      const topicErr = document.getElementById("topicErr");
+
+      const btn = document.querySelector("button");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const title = document.getElementById("title").value;
+        const snippet = document.getElementById("snippet").value;
+        const content = document.getElementById("content").value;
+        const topic = document.getElementById("topic").value;
+        const creatorName = document.getElementById("creatorName").value;
+        const createdBy = document.getElementById("createdBy").value;
+
+        console.log(title, snippet, content, topic, creatorName, createdBy);
+        titleErr.textContent = "";
+        snippetErr.textContent = "";
+        contentErr.textContent = "";
+        topicErr.textContent = "";
+
+        try {
+          const res = await fetch("/blogs/create-blog", {
+            method: "POST",
+            body: JSON.stringify({
+              title,
+              snippet,
+              content,
+              topic,
+              creatorName,
+              createdBy,
+            }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await res.json();
+          console.log(data);
+
+          if (data.errors) {
+            titleErr.textContent = data.errors.title;
+            snippetErr.textContent = data.errors.snippet;
+            contentErr.textContent = data.errors.content;
+            topicErr.textContent = data.errors.topic;
+          }
+          if (data.blog) {
+            location.assign("/blogs");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
+
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

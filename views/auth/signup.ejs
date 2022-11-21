@@ -5,6 +5,7 @@
     <%- include('../partials/nav.ejs') %>
     <h2 class="title">Signup</h2>
     <div class="form">
+      <div></div>
       <form action="/signup" method="POST">
         <label for="fname">First Name</label><br />
         <input type="text" id="fname" name="fname" /><br />
@@ -18,11 +19,13 @@
         <label for="password">Password</label><br />
         <input type="password" id="password" name="password" /><br />
         <span class="error" id="passwordErr"></span> <br />
-        <button>Signup</button>
+        <button class="user-signup-btn">Signup</button>
         <p>
           Already have an account? <a href="/users/signin" class="link">signin</a>
         </p>
       </form>
+      <div></div>
+    </div>
       <script>
         const form = document.querySelector("form");
         const fnameErr = document.getElementById("fnameErr");
@@ -66,7 +69,7 @@
           }
         });
       </script>
-    </div>
+   
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
