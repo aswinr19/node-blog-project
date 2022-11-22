@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Sono", sans-serif;
 }
 
 ul,
@@ -120,10 +120,7 @@ a {
     font-size: 18px;
   }
 
-  .form input {
-    width: 360px;
-  }
-
+  
   .post-create-btn {
     padding: 10px 20px;
   }
@@ -166,7 +163,7 @@ a {
   }
 
   .nav-main {
-    font-size: 24px;
+    font-size: 34px;
   }
 
   .nav ul li {
@@ -254,28 +251,32 @@ a {
     grid-column: 2/4;
   }
 
-  .btn {
+  .form .btn {
     margin: 10px;
     padding: 10px 20px;
-    background-color: #06d6a0;
     border: none;
-    border: 7px;
     color: #ffffff;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Sono", sans-serif;
   }
+
   .grid {
     display: grid;
     width: 80%;
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  input textarea select button {
+    font-family: "Sono", sans-serif;
+  }
+  .form input,
+  textarea {
+    width: 98%;
   }
 
+  .form button:hover {
+    color: white;
+    background-color: #06d6a0;
+  }
   .comments li {
     list-style: none;
     padding: 10px;

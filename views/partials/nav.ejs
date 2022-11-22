@@ -1,8 +1,7 @@
 <nav class="nav">
-  <li class="nav-main"><a href="/">Node Blog</a></li>
+  <label class="nav-main"><a href="/">Node Blog</a></label>
 
   <ul>
-
     <li class="nav-elm"><a href="/blogs/create-blog">Create</a></li>
 
     <li class="nav-elm"><a href="/about">About</a></li>
@@ -12,10 +11,10 @@
       <a href="/users/signin">Signin</a>
     </li>
     <% } else { %>
-    <li class="nav-elm" > 
+    <li class="nav-elm">
       <a href="/users/<%= user._id %>"><%= user.fname %> <%= user.lname %></a>
     </li>
-    <li class="nav-elm" >
+    <li class="nav-elm">
       <a href="/users/logout">Logout</a>
     </li>
     <% } %>
