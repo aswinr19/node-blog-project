@@ -120,6 +120,10 @@ a {
     font-size: 18px;
   }
 
+  .form input {
+    width: 360px;
+  }
+
   .post-create-btn {
     padding: 10px 20px;
   }
