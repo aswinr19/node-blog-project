@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 16px;
   font-family: "Sono", sans-serif;
 }
 
@@ -262,12 +261,126 @@ a {
   body {
     font-size: 20px;
   }
+
+  .title {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+
+  .nav-main {
+    font-size: 34px;
+    font-weight: bold;
+    margin: 25px;
+    margin-bottom: 50px;
+    list-style: none;
+  }
+
+  .nav-elm {
+    display: none;
+  }
+
+  a:hover {
+    color: #06d6a0;
+  }
+
+  .link {
+    color: #168aad;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    text-align: justify;
+    margin: 20px 160px;
+  }
+
+  .footer {
+    padding-top: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+  }
+
+  .post-author {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .post-content {
+    margin-top: 35px;
+    padding-bottom: 25px;
+    text-align: justify;
+  }
+  .post-author-avatar {
+    width: 17px;
+    border-radius: 50px;
+  }
+
+  .post-links a {
+    padding: 1px;
+    color: #8e8e93;
+  }
+
+  .post-comment-btn {
+    padding: 10px 20px;
+  }
+  .cmnt-author-avatar {
+    height: 18px;
+    border-radius: 50px;
+  }
+
+  .comment-author-name {
+    font-size: 13px;
+  }
+
+  .comment-created-date {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .comment-subject {
+    font-style: italic;
+  }
+
+  .form {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .form label {
+    font-size: 19px;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
+  .form input,
+  textarea,
+  select,
+  button {
+    font-size: 18px;
+  }
+
+  .post-create-btn {
+    padding: 10px 20px;
+  }
+
+  .post-update-btn {
+    padding: 10px 20px;
+  }
+
+  .user-signin-btn {
+    padding: 10px 15px;
+  }
+
+  .user-signup-btn {
+    padding: 10px 15px;
+  }
 }
 
 /* ldesktop */
 @media only screen and (min-width: 1200px) {
   body {
-    font-size: 20px;
+    font-size: 19px;
   }
   .nav {
     display: flex;
@@ -325,6 +438,11 @@ a {
     width: 300px;
   }
 
+  .post-author{
+    grid-column: 2/4;
+    margin-bottom: 0px;
+  }
+
   .post-links {
     grid-column: 2/4;
     margin: 0 auto;
@@ -332,15 +450,19 @@ a {
 
   .post-title {
     grid-column: 2/4;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .post-snippet {
     grid-column: 2/4;
     text-align: justify;
+
   }
 
   .post-content {
     grid-column: 2/4;
     text-align: justify;
+    margin-top: 5px;
   }
   .post-comment-form {
     grid-column: 2/4;
