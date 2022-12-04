@@ -28,14 +28,13 @@ a {
     margin-bottom: 0px;
   }
 .nav{
-  padding: 10px;
+  padding:40px 10px;
 }
   .nav-main {
-    font-size: 34px;
+    font-size: 38px;
     font-weight: bold;
     margin: 25px;
     margin-bottom: 50px;
-    list-style: none;
   }
 
   .nav-elm {
@@ -152,8 +151,13 @@ a {
     text-align: center;
   }
 
+  .nav{
+    padding-left: 70px;
+    padding-top: 60px;
+  }
+
   .nav-main {
-    font-size: 34px;
+    font-size: 40px;
     font-weight: bold;
     margin: 25px;
     margin-bottom: 50px;
@@ -273,8 +277,13 @@ a {
     margin-bottom: 0px;
   }
 
+  .nav{
+    padding-left: 135px;
+    padding-top: 50px;
+  }
+
   .nav-main {
-    font-size: 34px;
+    font-size: 45px;
     font-weight: bold;
     margin: 25px;
     margin-bottom: 50px;
