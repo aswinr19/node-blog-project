@@ -27,9 +27,9 @@ a {
     text-align: center;
     margin-bottom: 0px;
   }
-.nav{
-  padding:40px 10px;
-}
+  .nav {
+    padding: 40px 10px;
+  }
   .nav-main {
     font-size: 38px;
     font-weight: bold;
@@ -115,8 +115,6 @@ a {
     margin-bottom: 15px;
   }
 
- 
-
   .form input,
   textarea,
   select,
@@ -151,7 +149,7 @@ a {
     text-align: center;
   }
 
-  .nav{
+  .nav {
     padding-left: 70px;
     padding-top: 60px;
   }
@@ -274,10 +272,10 @@ a {
 
   .title {
     text-align: center;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
 
-  .nav{
+  .nav {
     padding-left: 135px;
     padding-top: 50px;
   }
@@ -453,7 +451,7 @@ a {
     width: 300px;
   }
 
-  .post-author{
+  .post-author {
     grid-column: 2/4;
     margin-bottom: 0px;
   }
@@ -471,7 +469,6 @@ a {
   .post-snippet {
     grid-column: 2/4;
     text-align: justify;
-
   }
 
   .post-content {
