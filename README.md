@@ -7,7 +7,7 @@ A simple blogging site using node.js , express , mongodb and ejs.
 First clone this repository, install the dependencies, and setup your .env file.
 
 ```
-git clone git@github.com:aswinr19/node-blog-project.git
+git clone https://github.com/aswinr19/node-blog-project.git
 cd node-blog-project
 npm install
 cp .env.example .env
